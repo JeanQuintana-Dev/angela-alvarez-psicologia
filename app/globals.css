@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #082a70;
-  --ink-deep: #061e51;
-  --violet: #6246d9;
-  --lavender: #eeeafe;
-  --lavender-soft: #f7f5ff;
-  --text: #18264c;
-  --muted: #536184;
-  --line: #ddd8f5;
+  --ink: #0d2c5b;
+  --ink-deep: #092342;
+  --violet: #2b6599;
+  --lavender: #e3e69c;
+  --lavender-soft: #f5f5d9;
+  --text: #173653;
+  --muted: #587183;
+  --line: #d5e0df;
   --white: #ffffff;
-  --success: #18a875;
+  --success: #2d765d;
 }
 
 * {
@@ -24,7 +24,7 @@ html {
 
 body {
   margin: 0;
-  background: #fcfcff;
+  background: #fbfcf8;
   color: var(--text);
   font-family: var(--font-geist-sans), "Manrope", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1705,5 +1705,492 @@ footer p:last-child {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Brand system: navy, clinical blue and soft yellow */
+.brand-logo {
+  display: inline-flex;
+  width: min(330px, 31vw);
+}
+
+.brand-logo img {
+  display: block;
+  width: 100%;
+  height: 68px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.site-header {
+  grid-template-columns: minmax(260px, 1fr) auto minmax(180px, 1fr);
+}
+
+.site-header nav a::after,
+.eyebrow::before,
+.focus-card li::before {
+  background: var(--lavender);
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 94% 12%, rgba(43, 101, 153, 0.11), transparent 25%),
+    linear-gradient(180deg, #ffffff 0%, #f8faf4 100%);
+}
+
+.hero::after {
+  background: #eef2d5;
+}
+
+.hero h1 em {
+  width: max-content;
+  max-width: 100%;
+  margin-top: 0.08em;
+  padding: 0.02em 0.15em 0.08em;
+  background: var(--lavender);
+  color: var(--ink-deep);
+  line-height: 0.9;
+}
+
+.portrait-halo {
+  background: rgba(227, 230, 156, 0.72);
+}
+
+.halo-two {
+  border-color: rgba(43, 101, 153, 0.3);
+  background: transparent;
+}
+
+.availability-card,
+.about-story,
+.service-card,
+.contact-card {
+  box-shadow: 0 22px 55px rgba(13, 44, 91, 0.08);
+}
+
+.availability-card,
+.about-story,
+.approach-cards article,
+.service-card,
+.contact-card {
+  border-color: var(--line);
+}
+
+.availability-card:hover,
+.approach-cards article:hover,
+.service-card:hover {
+  border-color: #9ebed0;
+}
+
+.about-photo {
+  height: 330px;
+  margin: -18px -18px 30px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #dce8df;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 24%;
+}
+
+.brand-statement {
+  width: min(100% - 48px, 1392px);
+  min-height: 650px;
+  margin: 20px auto 40px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(360px, 0.92fr) minmax(440px, 1.08fr);
+  border-radius: 38px;
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.brand-statement-image {
+  min-height: 650px;
+  overflow: hidden;
+}
+
+.brand-statement-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.brand-statement-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(46px, 6vw, 92px);
+}
+
+.brand-statement-copy h2 {
+  max-width: 700px;
+  margin: 0;
+  color: #ffffff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(44px, 4.7vw, 70px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.brand-statement-copy > p:not(.section-kicker) {
+  max-width: 590px;
+  margin: 28px 0 0;
+  color: #ccdae4;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.brand-statement-button {
+  margin-top: 34px;
+  background: var(--lavender);
+  color: var(--ink-deep);
+  box-shadow: none;
+  min-height: 58px;
+  padding: 0 24px;
+}
+
+.brand-statement-button:hover,
+.brand-statement-button:focus-visible {
+  background: #f0f1b8;
+  color: var(--ink-deep);
+}
+
+.focus-section {
+  border-color: #d8e1bf;
+  background:
+    radial-gradient(circle at 10% 4%, rgba(227, 230, 156, 0.54), transparent 27%),
+    #f7f8ea;
+}
+
+.focus-card {
+  border-color: #dde4c9;
+}
+
+.service-category,
+.all-services {
+  background: #f4f5db;
+}
+
+.service-card .service-choice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  padding: 17px 0 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.service-card .service-choice span {
+  color: var(--violet);
+  font-size: 18px;
+}
+
+.service-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  min-height: 72px;
+  padding: 14px 18px;
+  background: #ffffff;
+  color: var(--text);
+  text-align: left;
+  transition: background 160ms ease;
+}
+
+.service-list a:hover,
+.service-list a:focus-visible {
+  background: #f7f8ea;
+}
+
+.service-list a > span {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.resources-section {
+  padding-top: 90px;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.resources-grid figure {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 28px;
+  background: var(--ink);
+  box-shadow: 0 22px 55px rgba(13, 44, 91, 0.14);
+}
+
+.resources-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 320ms ease;
+}
+
+.resources-grid figure:hover img {
+  transform: scale(1.02);
+}
+
+.resources-grid figcaption {
+  padding: 18px 20px;
+  background: var(--ink);
+  color: var(--lavender);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+}
+
+.booking-section {
+  grid-template-columns: minmax(220px, 0.55fr) minmax(320px, 0.78fr) minmax(430px, 1.15fr);
+  gap: clamp(28px, 4vw, 58px);
+  align-items: start;
+  padding-block: 100px;
+  background:
+    radial-gradient(circle at 8% 5%, rgba(227, 230, 156, 0.2), transparent 24%),
+    linear-gradient(135deg, #092342, #0d2c5b 58%, #174d78);
+}
+
+.booking-visual {
+  overflow: hidden;
+  align-self: stretch;
+  min-height: 680px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 30px;
+  background: #2b6599;
+  box-shadow: 0 28px 70px rgba(0, 10, 34, 0.3);
+}
+
+.booking-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 680px;
+  object-fit: cover;
+}
+
+.doctoralia-intro {
+  padding-top: 18px;
+}
+
+.light-kicker,
+.booking-intro li > span,
+.booking-assurance svg {
+  color: var(--lavender);
+}
+
+.doctoralia-panel {
+  min-width: 0;
+  min-height: 690px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  color: var(--text);
+  box-shadow: 0 32px 80px rgba(0, 8, 40, 0.34);
+}
+
+.doctoralia-panel .form-heading {
+  margin-bottom: 20px;
+}
+
+.doctoralia-widget-host {
+  width: 100%;
+  min-height: 520px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fbfcf8;
+}
+
+.doctoralia-widget-host iframe {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 520px !important;
+  border: 0 !important;
+}
+
+.doctoralia-widget-host .zl-url {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  margin: 22px;
+  border-radius: 14px;
+  background: var(--ink);
+  color: #ffffff;
+  font-weight: 750;
+}
+
+.doctoralia-fallback {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.doctoralia-fallback a,
+.contact-bottom a {
+  color: var(--violet);
+  font-weight: 750;
+}
+
+.contact-bottom {
+  background: #f7f8ea;
+}
+
+footer {
+  border-top: 0;
+  background: var(--ink-deep);
+}
+
+footer .brand-logo img {
+  filter: brightness(0) invert(1);
+}
+
+footer p {
+  color: #bed0dc;
+}
+
+.floating-whatsapp {
+  background: var(--lavender);
+  color: var(--ink-deep);
+  box-shadow: 0 14px 32px rgba(13, 44, 91, 0.24);
+}
+
+.floating-whatsapp:hover,
+.floating-whatsapp:focus-visible {
+  background: #f0f1b8;
+}
+
+@media (max-width: 1240px) {
+  .site-header nav {
+    gap: 24px;
+  }
+
+  .booking-section {
+    grid-template-columns: minmax(250px, 0.7fr) minmax(420px, 1.3fr);
+  }
+
+  .booking-visual {
+    min-height: 560px;
+  }
+
+  .booking-visual img {
+    min-height: 560px;
+  }
+
+  .doctoralia-panel {
+    grid-column: 1 / -1;
+    width: min(100%, 760px);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 820px) {
+  .brand-logo {
+    width: min(250px, 58vw);
+  }
+
+  .brand-logo img {
+    height: 55px;
+  }
+
+  .brand-statement {
+    width: calc(100% - 24px);
+    grid-template-columns: 1fr;
+    border-radius: 30px;
+  }
+
+  .brand-statement-image {
+    min-height: 480px;
+  }
+
+  .brand-statement-copy {
+    padding: 52px 28px 58px;
+  }
+
+  .resources-grid,
+  .booking-section {
+    grid-template-columns: 1fr;
+  }
+
+  .resources-grid {
+    gap: 18px;
+  }
+
+  .resources-grid figure {
+    width: min(100%, 560px);
+    margin: 0 auto;
+  }
+
+  .booking-visual {
+    min-height: 560px;
+  }
+
+  .booking-section {
+    padding-inline: 20px;
+  }
+
+  .doctoralia-panel {
+    grid-column: auto;
+    width: 100%;
+    padding: 22px 14px;
+  }
+
+  .doctoralia-widget-host,
+  .doctoralia-widget-host iframe {
+    min-height: 500px !important;
+  }
+
+  footer .brand-logo {
+    width: min(320px, 85vw);
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header .brand-logo {
+    width: 205px;
+  }
+
+  .hero h1 em {
+    width: auto;
+  }
+
+  .about-photo {
+    height: 280px;
+    margin: -10px -8px 24px;
+  }
+
+  .brand-statement-image,
+  .booking-visual,
+  .booking-visual img {
+    min-height: 430px;
+  }
+
+  .resources-grid figcaption {
+    font-size: 18px;
   }
 }

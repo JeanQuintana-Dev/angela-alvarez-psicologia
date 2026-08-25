@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { useEffect } from "react";
 
 const services = [
   { name: "Visita de psicología", price: "$150.000", category: "Consulta" },
@@ -78,8 +78,6 @@ const focusGroups = [
   },
 ] as const;
 
-const times = ["8:00 a. m.", "9:30 a. m.", "11:00 a. m.", "2:00 p. m.", "3:30 p. m.", "5:00 p. m."];
-
 const CalendarIcon = ({ size = 20 }: { size?: number }) => (
   <svg aria-hidden="true" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M7 3v3M17 3v3M4 9h16" />
@@ -115,44 +113,44 @@ const MapIcon = () => (
   </svg>
 );
 
+function DoctoraliaWidget() {
+  useEffect(() => {
+    if (document.getElementById("zl-widget-s")) return;
+
+    const script = document.createElement("script");
+    script.id = "zl-widget-s";
+    script.src = "https://platform.docplanner.com/js/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  return (
+    <div className="doctoralia-widget-host">
+      <a
+        id="zl-url"
+        className="zl-url"
+        href="https://www.doctoralia.co/perfil/angela-alvarez-castellar"
+        rel="nofollow"
+        data-zlw-doctor="angela-alvarez-castellar"
+        data-zlw-type="big_with_calendar"
+        data-zlw-opinion="false"
+        data-zlw-hide-branding="true"
+        data-zlw-saas-only="true"
+        data-zlw-a11y-title="Widget de reserva de citas médicas"
+      >
+        Reservar una cita
+      </a>
+    </div>
+  );
+}
+
 export default function Home() {
-  const [modality, setModality] = useState("Presencial");
-  const [service, setService] = useState("Visita de psicología");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("9:30 a. m.");
-  const [name, setName] = useState("");
-  const [sent, setSent] = useState(false);
-
-  const whatsappUrl = useMemo(() => {
-    const message = [
-      "Hola, quisiera solicitar una cita con la psicóloga Ángela Álvarez Castellar.",
-      "",
-      `Nombre: ${name || "Por completar"}`,
-      `Servicio: ${service}`,
-      `Modalidad: ${modality}`,
-      `Fecha preferida: ${date || "Por definir"}`,
-      `Hora preferida: ${time}`,
-      "",
-      "Entiendo que la cita queda sujeta a confirmación.",
-    ].join("\n");
-    return `https://wa.me/573004720082?text=${encodeURIComponent(message)}`;
-  }, [date, modality, name, service, time]);
-
-  const submitAppointment = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSent(true);
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-  };
 
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Ir al inicio">
-          <span className="brand-mark" aria-hidden="true">ÁA</span>
-          <span>
-            <strong>Ángela Álvarez</strong>
-            <small>Psicología clínica</small>
-          </span>
+        <a className="brand brand-logo" href="#inicio" aria-label="Ángela Álvarez Castellar, ir al inicio">
+          <img src="/brand-lockup.png" alt="Ángela Álvarez Castellar, psicóloga especialista en psicología clínica" />
         </a>
 
         <nav aria-label="Navegación principal">
@@ -232,6 +230,7 @@ export default function Home() {
 
         <div className="about-grid">
           <article className="about-story">
+            <div className="about-photo"><img src="/angela-consultorio.jpg" alt="Ángela Álvarez Castellar en su consultorio" /></div>
             <span className="soft-icon"><BrainIcon /></span>
             <h3>Ángela Álvarez Castellar</h3>
             <p>
@@ -251,6 +250,18 @@ export default function Home() {
             <article><span>02</span><div><h3>Intervención basada en evidencia</h3><p>Herramientas cognitivo-conductuales y dialéctico-conductuales adaptadas a cada proceso.</p></div></article>
             <article><span>03</span><div><h3>Acompañamiento humano</h3><p>Un vínculo terapéutico respetuoso, confidencial y libre de juicios.</p></div></article>
           </div>
+        </div>
+      </section>
+
+      <section className="brand-statement">
+        <div className="brand-statement-image">
+          <img src="/angela-evaluacion.jpg" alt="Ángela Álvarez durante una evaluación psicológica" />
+        </div>
+        <div className="brand-statement-copy">
+          <p className="section-kicker light-kicker">Evaluación e intervención</p>
+          <h2>Comprender lo que ocurre es el primer paso para transformarlo.</h2>
+          <p>Evaluación clínica y neuropsicológica con una mirada rigurosa, cercana y orientada a objetivos concretos para cada etapa de vida.</p>
+          <a className="button brand-statement-button" href="#agendar"><CalendarIcon size={20} /> Agendar valoración</a>
         </div>
       </section>
 
@@ -284,9 +295,7 @@ export default function Home() {
               <div><span className="service-category">{item.category}</span><span className="service-index">0{index + 1}</span></div>
               <h3>{item.name}</h3>
               <p className={item.price === "Consultar" ? "price price-muted" : "price"}>{item.price}</p>
-              <button type="button" onClick={() => { setService(item.name); document.getElementById("agendar")?.scrollIntoView({ behavior: "smooth" }); }}>
-                Elegir servicio <span aria-hidden="true">→</span>
-              </button>
+              <a className="service-choice" href="#agendar">Reservar en Doctoralia <span aria-hidden="true">→</span></a>
             </article>
           ))}
         </div>
@@ -295,61 +304,47 @@ export default function Home() {
           <summary>Ver los {services.length} servicios y tarifas <span aria-hidden="true">＋</span></summary>
           <div className="service-list">
             {services.map((item) => (
-              <button type="button" key={item.name} onClick={() => { setService(item.name); document.getElementById("agendar")?.scrollIntoView({ behavior: "smooth" }); }}>
+              <a key={item.name} href="#agendar">
                 <span><small>{item.category}</small>{item.name}</span><strong>{item.price}</strong>
-              </button>
+              </a>
             ))}
           </div>
         </details>
       </section>
 
+      <section className="resources-section content-section" id="recursos">
+        <div className="section-heading resources-heading">
+          <div><p className="section-kicker">Contenido psicoeducativo</p><h2>Comprender también es parte del proceso</h2></div>
+          <p>Recursos breves para acercarte a la salud mental, la neuropsicología clínica y las áreas de evaluación.</p>
+        </div>
+        <div className="resources-grid">
+          <figure><img src="/recurso-ansiedad.jpg" alt="Orientación sobre ansiedad y depresión" /><figcaption>Ansiedad y depresión</figcaption></figure>
+          <figure><img src="/recurso-neuropsicologia.png" alt="Introducción a la neuropsicología clínica" /><figcaption>Neuropsicología clínica</figcaption></figure>
+          <figure><img src="/recurso-areas-evaluacion.png" alt="Áreas de evaluación neuropsicológica" /><figcaption>Áreas de evaluación</figcaption></figure>
+        </div>
+      </section>
+
       <section className="booking-section" id="agendar">
-        <div className="booking-intro">
+        <div className="booking-visual">
+          <img src="/agenda-doctoralia.jpg" alt="Ángela Álvarez Castellar, agenda tu cita" />
+        </div>
+        <div className="booking-intro doctoralia-intro">
           <p className="section-kicker light-kicker">Agendamiento</p>
-          <h2>Da el primer paso a tu ritmo</h2>
-          <p>Selecciona tus preferencias. Al finalizar, enviaremos la solicitud por WhatsApp para confirmar disponibilidad.</p>
+          <h2>Da el primer paso con un horario que funcione para ti</h2>
+          <p>Consulta la agenda disponible y reserva directamente a través de Doctoralia. Recibirás la confirmación de tu cita en el canal indicado durante el proceso.</p>
           <ol>
-            <li><span>1</span><div><strong>Elige el servicio</strong><small>Selecciona el tipo de atención que buscas.</small></div></li>
-            <li><span>2</span><div><strong>Indica fecha y hora</strong><small>Son preferencias; el consultorio confirmará el espacio.</small></div></li>
-            <li><span>3</span><div><strong>Confirma por WhatsApp</strong><small>Recibirás acompañamiento para completar tu reserva.</small></div></li>
+            <li><span>1</span><div><strong>Revisa la disponibilidad</strong><small>El calendario muestra los espacios habilitados.</small></div></li>
+            <li><span>2</span><div><strong>Selecciona fecha y hora</strong><small>Elige la alternativa que mejor se ajuste a ti.</small></div></li>
+            <li><span>3</span><div><strong>Completa la reserva</strong><small>Doctoralia te guiará para confirmar el agendamiento.</small></div></li>
           </ol>
-          <div className="booking-assurance"><LockIcon /><span><strong>Tu información es privada.</strong> No almacenamos datos clínicos en esta página.</span></div>
+          <div className="booking-assurance"><LockIcon /><span><strong>Reserva segura.</strong> Los datos se gestionan directamente en Doctoralia.</span></div>
         </div>
 
-        <form className="booking-form" onSubmit={submitAppointment}>
-          <div className="form-heading"><span className="icon-box"><CalendarIcon size={24} /></span><div><small>Solicitud de cita</small><h3>Cuéntanos tus preferencias</h3></div></div>
-
-          <fieldset>
-            <legend>Modalidad</legend>
-            <div className="option-pills">
-              {["Presencial", "En línea", "A domicilio"].map((option) => (
-                <button className={modality === option ? "selected" : ""} type="button" aria-pressed={modality === option} onClick={() => setModality(option)} key={option}>{option}</button>
-              ))}
-            </div>
-          </fieldset>
-
-          <label>Servicio
-            <select value={service} onChange={(event) => setService(event.target.value)}>
-              {services.map((item) => <option key={item.name} value={item.name}>{item.name} · {item.price}</option>)}
-            </select>
-          </label>
-
-          <div className="form-row">
-            <label>Nombre y apellido<input required value={name} onChange={(event) => setName(event.target.value)} placeholder="Escribe tu nombre" /></label>
-            <label>Fecha preferida<input required type="date" value={date} onChange={(event) => setDate(event.target.value)} /></label>
-          </div>
-
-          <fieldset>
-            <legend>Hora preferida</legend>
-            <div className="time-grid">
-              {times.map((option) => <button className={time === option ? "selected" : ""} type="button" aria-pressed={time === option} onClick={() => setTime(option)} key={option}>{option}</button>)}
-            </div>
-          </fieldset>
-
-          <button className="button submit-button" type="submit">Continuar por WhatsApp <span aria-hidden="true">→</span></button>
-          <p className="form-privacy">Al continuar, enviarás estos datos a WhatsApp. La cita queda sujeta a confirmación del consultorio.</p>
-          {sent && <p className="form-success" role="status">Tu solicitud está lista. Si WhatsApp no se abrió, <a href={whatsappUrl} target="_blank" rel="noreferrer">continúa aquí</a>.</p>}
-        </form>
+        <div className="doctoralia-panel">
+          <div className="form-heading"><span className="icon-box"><CalendarIcon size={24} /></span><div><small>Agenda en línea</small><h3>Reserva tu cita</h3></div></div>
+          <DoctoraliaWidget />
+          <p className="doctoralia-fallback">Si el calendario no aparece, <a href="https://www.doctoralia.co/perfil/angela-alvarez-castellar" target="_blank" rel="nofollow noreferrer">abre el perfil de Doctoralia</a>.</p>
+        </div>
       </section>
 
       <section className="contact-section content-section" id="contacto">
@@ -376,7 +371,7 @@ export default function Home() {
         </div>
 
         <div className="contact-bottom">
-          <p><strong>Redes sociales</strong> Encuéntrala como Ángela Álvarez Castellar en Instagram y LinkedIn.</p>
+          <p><strong>Instagram y correo</strong> <a href="https://www.instagram.com/psicoamac/" target="_blank" rel="noreferrer">@psicoamac</a> · <a href="mailto:aalvarezcastellar@gmail.com">aalvarezcastellar@gmail.com</a></p>
           <a href="#agendar">Solicitar una cita <span aria-hidden="true">→</span></a>
         </div>
       </section>
@@ -387,7 +382,7 @@ export default function Home() {
       </section>
 
       <footer>
-        <a className="brand footer-brand" href="#inicio"><span className="brand-mark" aria-hidden="true">ÁA</span><span><strong>Ángela Álvarez</strong><small>Psicología clínica</small></span></a>
+        <a className="brand footer-brand brand-logo" href="#inicio"><img src="/brand-lockup.png" alt="Ángela Álvarez Castellar" /></a>
         <p>Atención psicológica y neuropsicológica · Consulta presencial y en línea</p>
         <p>© {new Date().getFullYear()} Todos los derechos reservados.</p>
       </footer>
