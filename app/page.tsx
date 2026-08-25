@@ -325,19 +325,21 @@ export default function Home() {
       </section>
 
       <section className="booking-section" id="agendar">
-        <div className="booking-visual">
-          <img src="/agenda-doctoralia.jpg" alt="Ángela Álvarez Castellar, agenda tu cita" />
-        </div>
-        <div className="booking-intro doctoralia-intro">
-          <p className="section-kicker light-kicker">Agendamiento</p>
-          <h2>Da el primer paso con un horario que funcione para ti</h2>
-          <p>Consulta la agenda disponible y reserva directamente a través de Doctoralia. Recibirás la confirmación de tu cita en el canal indicado durante el proceso.</p>
-          <ol>
-            <li><span>1</span><div><strong>Revisa la disponibilidad</strong><small>El calendario muestra los espacios habilitados.</small></div></li>
-            <li><span>2</span><div><strong>Selecciona fecha y hora</strong><small>Elige la alternativa que mejor se ajuste a ti.</small></div></li>
-            <li><span>3</span><div><strong>Completa la reserva</strong><small>Doctoralia te guiará para confirmar el agendamiento.</small></div></li>
-          </ol>
-          <div className="booking-assurance"><LockIcon /><span><strong>Reserva segura.</strong> Los datos se gestionan directamente en Doctoralia.</span></div>
+        <div className="booking-copy-column">
+          <div className="booking-visual">
+            <img src="/angela-evaluacion.jpg" alt="Ángela Álvarez Castellar durante una evaluación clínica" />
+          </div>
+          <div className="booking-intro doctoralia-intro">
+            <p className="section-kicker light-kicker">Agendamiento</p>
+            <h2>Da el primer paso con un horario que funcione para ti</h2>
+            <p>Consulta la agenda disponible y reserva directamente a través de Doctoralia. Recibirás la confirmación de tu cita en el canal indicado durante el proceso.</p>
+            <ol>
+              <li><span>1</span><div><strong>Revisa la disponibilidad</strong><small>El calendario muestra los espacios habilitados.</small></div></li>
+              <li><span>2</span><div><strong>Selecciona fecha y hora</strong><small>Elige la alternativa que mejor se ajuste a ti.</small></div></li>
+              <li><span>3</span><div><strong>Completa la reserva</strong><small>Doctoralia te guiará para confirmar el agendamiento.</small></div></li>
+            </ol>
+            <div className="booking-assurance"><LockIcon /><span><strong>Reserva segura.</strong> Los datos se gestionan directamente en Doctoralia.</span></div>
+          </div>
         </div>
 
         <div className="doctoralia-panel">
