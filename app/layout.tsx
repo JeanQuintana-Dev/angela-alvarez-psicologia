@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ángela Álvarez Castellar | Psicología clínica",
     description: "Psicología clínica, neuropsicología y agendamiento de citas en línea.",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Ángela Álvarez Castellar, psicología clínica y neuropsicología" }],
+    images: [{ url: "/angela-principal-clara.webp", width: 1095, height: 1437, alt: "Ángela Álvarez Castellar, psicóloga clínica y neuropsicóloga" }],
     locale: "es_CO",
     type: "website",
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ángela Álvarez Castellar | Psicología clínica",
     description: "Psicología clínica, neuropsicología y agendamiento de citas en línea.",
-    images: ["/og.png"],
+    images: ["/angela-principal-clara.webp"],
   },
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }],
