@@ -344,13 +344,32 @@ export default function Home() {
           <article className="contact-card">
             <span className="soft-icon"><MapIcon /></span><h3>Ubicación del consultorio</h3>
             <p>Consulta la ruta, indicaciones y opciones de llegada en Google Maps.</p>
-            <a className="card-link" href="https://maps.app.goo.gl/6nVWdn7jzcQbWXt88" target="_blank" rel="noreferrer">Abrir ubicación <span aria-hidden="true">↗</span></a>
+            <a className="card-link" href="https://maps.app.goo.gl/sWFJ9KRcyiz5wiAA8?g_st=iw" target="_blank" rel="noreferrer">Abrir ubicación <span aria-hidden="true">↗</span></a>
           </article>
           <article className="contact-card">
             <span className="soft-icon"><span aria-hidden="true">$</span></span><h3>Formas de pago</h3>
             <p>Para visitas privadas:</p><div className="payment-pills"><span>Efectivo</span><span>Transferencia</span></div>
           </article>
         </div>
+
+        <article className="contact-map-card">
+          <div className="contact-map-copy">
+            <span className="soft-icon"><MapIcon /></span>
+            <p className="section-kicker">Cómo llegar</p>
+            <h3>Psicóloga Clínica Ángela Álvarez Castellar</h3>
+            <p>Dg. 31A #75-22, manzana D, lote 19, El Recreo, Cartagena de Indias, Bolívar.</p>
+            <a className="card-link" href="https://maps.app.goo.gl/sWFJ9KRcyiz5wiAA8?g_st=iw" target="_blank" rel="noreferrer">Ver ruta en Google Maps <span aria-hidden="true">↗</span></a>
+          </div>
+          <div className="contact-map-frame">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.4206016514786!2d-75.474273!3d10.38813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef627ebcaaab513%3A0x61544de6e6c0b9!2sPsic%C3%B3loga%20Cl%C3%ADnica%20Angela%20%C3%81lvarez%20Castellar!5e0!3m2!1ses-419!2sco!4v1789417664714!5m2!1ses-419!2sco"
+              title="Mapa del consultorio de Ángela Álvarez Castellar"
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
+        </article>
 
         <div className="contact-bottom">
           <p><strong>Instagram y correo</strong> <a href="https://www.instagram.com/psicoamac/" target="_blank" rel="noreferrer">@psicoamac</a> · <a href="mailto:aalvarezcastellar@gmail.com">aalvarezcastellar@gmail.com</a></p>
