@@ -3,32 +3,18 @@
 import { useEffect } from "react";
 
 const services = [
-  { name: "Visita de psicología", price: "$150.000", category: "Consulta" },
-  { name: "Psicoterapia para adulto mayor", price: "$150.000", category: "Psicoterapia" },
-  { name: "Urgencias psicológicas a domicilio", price: "$170.000", category: "Urgencias" },
-  { name: "Tratamiento para la depresión", price: "Consultar", category: "Tratamiento" },
-  { name: "Test de personalidad", price: "Consultar", category: "Evaluación" },
-  { name: "Terapia dialéctico-conductual (DBT)", price: "$150.000", category: "Psicoterapia" },
-  { name: "Terapia cognitivo-conductual (TCC)", price: "$150.000", category: "Psicoterapia" },
-  { name: "Salud mental empresarial", price: "Consultar", category: "Empresas" },
-  { name: "Psicoterapia para adolescentes", price: "$150.000", category: "Psicoterapia" },
-  { name: "Psicoterapia individual", price: "Consultar", category: "Psicoterapia" },
-  { name: "Psicoterapia familiar", price: "$160.000", category: "Psicoterapia" },
-  { name: "Psicoterapia de pareja", price: "$160.000", category: "Psicoterapia" },
-  { name: "Pruebas psicotécnicas", price: "Consultar", category: "Evaluación" },
-  { name: "Asesoría psicológica y psicoeducación", price: "Consultar", category: "Orientación" },
-  { name: "Orientación vocacional", price: "$120.000", category: "Orientación" },
-  { name: "Grupos de apoyo para pacientes con ansiedad", price: "Consultar", category: "Grupos" },
-  { name: "Grupos de apoyo", price: "Consultar", category: "Grupos" },
-  { name: "Evaluación psicológica", price: "Consultar", category: "Evaluación" },
-  { name: "Evaluación neuropsicológica", price: "$180.000 – $620.000", category: "Neuropsicología" },
-  { name: "Estimulación cognitiva", price: "$120.000", category: "Neuropsicología" },
-  { name: "Consulta psicológica por duelo", price: "$150.000", category: "Consulta" },
-  { name: "Consulta psicológica por depresión", price: "Consultar", category: "Consulta" },
-  { name: "Consulta psicológica por ansiedad", price: "Consultar", category: "Consulta" },
-  { name: "Consulta en línea", price: "$140.000", category: "Consulta" },
-  { name: "Certificado para animales de apoyo emocional", price: "Desde $100.000", category: "Certificación" },
-  { name: "Urgencias psicológicas", price: "$150.000", category: "Urgencias" },
+  { name: "Psicología Clínica", category: "Atención clínica" },
+  { name: "Neuropsicología Clínica", category: "Neuropsicología" },
+  { name: "Psicoterapia Cognitivo-Conductual, Dialéctico-Conductual (DBT) y de Esquemas", category: "Psicoterapia" },
+  { name: "Intervención en Crisis y Primeros Auxilios Psicológicos", category: "Intervención" },
+  { name: "Atención en Patologías Psiquiátricas", category: "Salud mental" },
+  { name: "Atención a Pacientes con Adicciones y Víctimas de Violencia Sexual", category: "Atención especializada" },
+  { name: "Pruebas Diagnósticas Especializadas", category: "Evaluación" },
+  { name: "Orientación Vocacional", category: "Orientación" },
+  { name: "Certificados de Apoyo Emocional", category: "Certificación" },
+  { name: "Rehabilitación Cognitiva", category: "Rehabilitación" },
+  { name: "Talleres y Cursos Empresariales o para Poblaciones Especiales", category: "Formación" },
+  { name: "Asesoría y Supervisión Clínica a Estudiantes de Psicología", category: "Supervisión clínica" },
 ] as const;
 
 const focusGroups = [
@@ -291,31 +277,19 @@ export default function Home() {
 
       <section className="services-section content-section" id="servicios">
         <div className="section-heading services-heading">
-          <div><p className="section-kicker">Servicios y tarifas</p><h2>Elige el acompañamiento que necesitas</h2></div>
-          <p>Los valores corresponden a atención particular. Algunos servicios requieren valoración previa para definir alcance y tarifa.</p>
+          <div><p className="section-kicker">Servicios</p><h2>Elige el acompañamiento que necesitas</h2></div>
+          <p>Atención clínica, neuropsicológica y formativa adaptada a las necesidades de cada persona, familia, institución o población.</p>
         </div>
 
         <div className="featured-services">
-          {services.slice(0, 8).map((item, index) => (
+          {services.map((item, index) => (
             <article className="service-card" key={item.name}>
-              <div><span className="service-category">{item.category}</span><span className="service-index">0{index + 1}</span></div>
+              <div><span className="service-category">{item.category}</span><span className="service-index">{String(index + 1).padStart(2, "0")}</span></div>
               <h3>{item.name}</h3>
-              <p className={item.price === "Consultar" ? "price price-muted" : "price"}>{item.price}</p>
               <a className="service-choice" href="#agendar">Reservar en Doctoralia <span aria-hidden="true">→</span></a>
             </article>
           ))}
         </div>
-
-        <details className="all-services">
-          <summary>Ver los {services.length} servicios y tarifas <span aria-hidden="true">＋</span></summary>
-          <div className="service-list">
-            {services.map((item) => (
-              <a key={item.name} href="#agendar">
-                <span><small>{item.category}</small>{item.name}</span><strong>{item.price}</strong>
-              </a>
-            ))}
-          </div>
-        </details>
       </section>
 
       <section className="resources-section content-section" id="recursos">
