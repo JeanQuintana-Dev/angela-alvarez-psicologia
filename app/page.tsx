@@ -342,11 +342,6 @@ export default function Home() {
             <small>Llamadas y coordinación de citas</small>
           </article>
           <article className="contact-card">
-            <span className="soft-icon"><MapIcon /></span><h3>Ubicación del consultorio</h3>
-            <p>Consulta la ruta, indicaciones y opciones de llegada en Google Maps.</p>
-            <a className="card-link" href="https://maps.app.goo.gl/sWFJ9KRcyiz5wiAA8?g_st=iw" target="_blank" rel="noreferrer">Abrir ubicación <span aria-hidden="true">↗</span></a>
-          </article>
-          <article className="contact-card">
             <span className="soft-icon"><span aria-hidden="true">$</span></span><h3>Formas de pago</h3>
             <p>Para visitas privadas:</p><div className="payment-pills"><span>Efectivo</span><span>Transferencia</span></div>
           </article>
