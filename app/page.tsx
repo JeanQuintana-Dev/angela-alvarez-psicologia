@@ -187,7 +187,7 @@ export default function Home() {
           <div className="portrait-halo halo-one" aria-hidden="true" />
           <div className="portrait-halo halo-two" aria-hidden="true" />
           <div className="portrait-frame">
-            <img src="/angela-alvarez.png" alt="Ángela Álvarez Castellar, psicóloga clínica" />
+            <img src="/angela-principal.webp" alt="Ángela Álvarez Castellar, psicóloga clínica" />
           </div>
 
           <aside className="availability-card" aria-label="Opciones de agendamiento">
