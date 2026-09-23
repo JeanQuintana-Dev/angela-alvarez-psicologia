@@ -136,6 +136,39 @@ function DoctoraliaWidget() {
   );
 }
 
+function InstagramWidget() {
+  useEffect(() => {
+    const scriptId = "instagram-embed-js";
+    const existing = document.getElementById(scriptId) as HTMLScriptElement | null;
+    if (existing) {
+      const instagram = (window as Window & { instgrm?: { Embeds?: { process: () => void } } }).instgrm;
+      instagram?.Embeds?.process();
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.id = scriptId;
+    script.src = "https://www.instagram.com/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  return (
+    <div className="instagram-embed-wrap">
+      <blockquote
+        className="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/psicoamac/"
+        data-instgrm-version="14"
+      >
+        <a href="https://www.instagram.com/psicoamac/" target="_blank" rel="noreferrer">
+          Ver publicaciones de @psicoamac en Instagram
+        </a>
+      </blockquote>
+    </div>
+  );
+}
+
+
 export default function Home() {
 
   return (
@@ -304,6 +337,15 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="instagram-section content-section" id="instagram">
+        <div className="section-heading instagram-heading">
+          <div><p className="section-kicker">Instagram</p><h2>Ideas y recursos para tu bienestar</h2></div>
+          <a className="card-link" href="https://www.instagram.com/psicoamac/" target="_blank" rel="noreferrer">Seguir a @psicoamac <span aria-hidden="true">↗</span></a>
+        </div>
+        <InstagramWidget />
+      </section>
+
+
       <section className="booking-section" id="agendar">
         <div className="booking-copy-column">
           <div className="booking-visual">
@@ -344,6 +386,10 @@ export default function Home() {
           <article className="contact-card">
             <span className="soft-icon"><span aria-hidden="true">$</span></span><h3>Formas de pago</h3>
             <p>Para visitas privadas:</p><div className="payment-pills"><span>Efectivo</span><span>Transferencia</span></div>
+            <a className="wompi-payment-link" href="https://checkout.wompi.co/l/VPOS_mfRMiJ" target="_blank" rel="noreferrer">
+              <span aria-hidden="true">$</span> Pagar en línea con Wompi <span aria-hidden="true">↗</span>
+            </a>
+            <small className="wompi-payment-note">El pago se completa en el sitio seguro de Wompi.</small>
           </article>
         </div>
 
